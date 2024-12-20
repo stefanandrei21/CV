@@ -1,0 +1,85 @@
+Javascript
+- trutty and falsy
+- prototypes, prototype chain  X    __proto__ vs prototype - prima este pentru orice variabila, a 2-a doar pentru functiile constructor, dar pointeaza
+catre acelasi lucru si sunt egale cu ===
+- classes & constructors X = clasele sunt syntactic sugar peste constructori, constructor keyword
+- hoisting X se face pentru functii si pentru variabile declarate cu var
+- function closures X = se retine pe HEAP valoarea unui parametru din afara scope-ului functiei, dar care va fi folosit in interiorul functiei
+- callbacks X = functii ce sunt trimise ca parametru altor functii care isi vor face treaba si apoi vor apela functia data ca parametru
+- promises X = fullfiled, pending sau failed. are ca parametrii resolve si reject, 2 functii apelate in functie de rezultatul promisiunii
+		    Promise.all - asteapta pentru mai multe promisiuni sa se termine, Promise.race = asteapta pt una singura
+- call stack, microtasks, macrotasks
+- array methods X = map, filter, forEach, find, some (macar unul), every (toate), reduce, includes
+- string methods = charAt, concat, includes, indexOf, replace, slice(startIndex, indexAfterEnd), split(" ") => arr; substr si substring
+- DOM Manipulation = document.getElementBy, document.querySelector, .querySelectorAll, .classList.add()/remove() .innerHTML = content modify
+				element.style.[css-property]
+- REST X = REpresentational State Transfer, stil arhitectural pentru design-ul API-urilor (=structura pentru constructia API-urilor pt web), 
+		Reguli:
+		- folosirea verbelor HTTP specifice
+		- un anumit pattern pentru rute si endpoint-uri
+		-
+- Cereri HTTP:
+	GET, POST (create), PUT, PATCH
+- API = a set of functions and procedures allowing the creation of applications that access the features or data of an operating system, application, or other service., 
+API - servicii care expun pentru clienti (ca un meniu la restaurant)
+- UX
+folosirea culorilor analoage pentru font si background arata bine
+NU folosim culori complementare pt font si bg
+serif - mai friendly
+sans-serif - mai traditional, stabil
+
+
+
+Java & OOP
+
+- principii OOP
+ * Abstractizare - interfete (clase abstracte pure) si clase abstracte. Metodele abstracte trebuie implementate de ceva mai concret
+ * Incapsulare - gruparea conceptelor intr-o clasa, ascunderea starii interne si expunerea prin metode (motive de securitate)
+ * Mostenire - se bazeaza pe o clasa parinte si o clasa copil care are toate metodele si campurile clasei extinse
+		  - refolosirea codului pt clase super
+		  - o clasa nu poate mosteni alte 2 clase
+ * Polimorfism - abilitatea unei clase de a se comporta ca altele (gen pisica se comporta si ca animal)
+- polimorifsm static vs dinamic
+	- overload la static (compile) in functie de tipul de semnatura functiei
+	- override la dinamic (run-time) parametrii la fel si tipul de return sa fie la fel sau sa il mosteneasca
+- modificatori de acces
+	- public, protected, default, private 
+- final pentru functii, variabile, clase
+	- functiile nu pot fi suprascrise
+	- variabile - o singura asignare
+	- clase - nu pot fi mostenite
+- campurile dintr-o interfata sunt IMPLICIT STATIC FINAL
+- colectii:
+MAP : cheie-valoare, HashMap, TreeMap, LinkedHashMap
+SET : fara duplicate, HashSet, TreeSet, LinkedHashSet
+LIST : LinkedList, ArrayList
+- exceptii:
+	-uncheckced: StackOverFlow
+	- Checked: RunTime: NullPointer, Arithmetic, IndexOutOfBounds
+	 		Other: IOException
+- upcasting si downcasting
+
+- design pattern-uri
+
+Singleton = crearea unei singure instante (lazy si eager init)
+Visitor = 
+2 interfete:
+Visitor si Visitable
+	Visitable = implementata de diversele tipuri de angajati, expune metoda accept(Visitor v) {v.visit(this)}
+	Visitor = interfata care expune cate o metoda cu acelasi nume dar parametrii diferiti (parametrul = tipul angajatului),
+			implementata de un visitor concret, care face ceva diferit in functie de tipul obiectului (tipul angajatului)
+			dat ca parametru
+In main un array de angajati si pt fiecare se apeleaza accept(VisitorConcret)
+
+Observable = un subiect si niste observatori care vor face update atunci cand primesc o notificare de la update (exemplu cu agentie de stiri)
+Factory = exemplul cu pizza, crearea unui obiect diferit (diferit pentru ca are o metoda override-uita diferit)
+Strategy = exemplul cu plata
+           	- interfata de strategie care expune o metoda strategie
+		- 2 clase: plata cu card si plata cu paypal care implementeaza interfata de strategie
+		- Noi vom apela  o metoda care primeste ca parametru un PaymentStrategy, nu ne intereseaza ce strategie folosim, dar vom apela metoda pay din acea strategie si
+		se va duce dinamic in metoda specifica acelei strategii
+Builder = clasa statica in clasa de baza, cu un constructor normal pt campuri obligatorii si cate un constructor care
+		- returneaza obiectul dupa modificarea campului, pt fiecare camp optional. + metoda build care returneaza un
+		obiect al clasei de baza pe baza obiectului Builder
+	   -  constructor privat cu argument un obiect de tip Builder in clasa de baza
+		
